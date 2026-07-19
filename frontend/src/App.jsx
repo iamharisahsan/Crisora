@@ -93,10 +93,10 @@ function App() {
 
       <main className="app-grid">
         <aside className="control-rail glass-panel">
-          <div className="eyebrow">Crisis Command Deck</div>
-          <h1>Multi-Agent PR Crisis Matrix</h1>
+          <div className="eyebrow">Crisis Orchestration</div>
+          <h1>Crisora</h1>
           <p className="lede">
-            A cinematic React interface for your Qwen-powered legal, PR, and arbitrator agents.
+            A Crisis Orchestration platform for your Qwen-powered legal, PR, and arbitrator agents.
           </p>
 
           <div className="control-group">
@@ -153,8 +153,8 @@ function App() {
         <section className="content-stack">
           <header className="hero glass-panel">
             <div className="hero-copy">
-              <div className="eyebrow">Agent Society // React Edition</div>
-              <h2>Cooler UI, same decision logic.</h2>
+              <div className="eyebrow">Agent Society</div>
+              <h2>Multi-Agent PR Crisis Matrix</h2>
               <p>
                 The Streamlit shell is replaced with a custom command-center experience while the Qwen calls,
                 prompts, and scoring logic remain on the Python side.
