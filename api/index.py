@@ -1,5 +1,9 @@
+from pathlib import Path
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from crisis_service import run_crisis_simulation
@@ -19,6 +23,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+DIST_DIR = Path(__file__).resolve().parents[1] / "frontend" / "dist"
+INDEX_FILE = DIST_DIR / "index.html"
 
 
 @app.get("/api/meta")
@@ -42,3 +49,28 @@ def simulate(request: SimulationRequest):
         raise HTTPException(status_code=502, detail=str(exc)) from exc
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"Unexpected simulation failure: {exc}") from exc
+
+
+if DIST_DIR.exists():
+    assets_dir = DIST_DIR / "assets"
+    if assets_dir.exists():
+        app.mount("/assets", StaticFiles(directory=str(assets_dir)), name="assets")
+
+
+@app.get("/")
+def serve_root():
+    if INDEX_FILE.exists():
+        return FileResponse(INDEX_FILE)
+    return {
+        "message": "Frontend build not found.",
+        "hint": "Run `cd frontend && npm run build` before deploying.",
+    }
+
+
+@app.get("/{path:path}")
+def serve_spa(path: str):
+    if path.startswith("api/"):
+        raise HTTPException(status_code=404, detail="Not found")
+    if INDEX_FILE.exists():
+        return FileResponse(INDEX_FILE)
+    raise HTTPException(status_code=404, detail="Frontend build not found")
