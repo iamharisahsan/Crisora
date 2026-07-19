@@ -160,8 +160,7 @@ function App() {
               <div className="eyebrow">Agent Society</div>
               <h2>Multi-Agent PR Crisis Matrix</h2>
               <p>
-                The Streamlit shell is replaced with a custom command-center experience while the Qwen calls,
-                prompts, and scoring logic remain on the Python side.
+                Instead of a standard chatbot, we are built an asynchronous, multi-agent negotiation playground for the business that faces a massive, sudden crisis (e.g., a data breach, a rogue viral tweet, or a supply chain collapse).
               </p>
             </div>
 
