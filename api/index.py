@@ -60,7 +60,9 @@ if DIST_DIR.exists():
 @app.get("/")
 def serve_root():
     if INDEX_FILE.exists():
-        return FileResponse(INDEX_FILE)
+        response = FileResponse(INDEX_FILE)
+        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+        return response
     return {
         "message": "Frontend build not found.",
         "hint": "Run `cd frontend && npm run build` before deploying.",
@@ -72,5 +74,7 @@ def serve_spa(path: str):
     if path.startswith("api/"):
         raise HTTPException(status_code=404, detail="Not found")
     if INDEX_FILE.exists():
-        return FileResponse(INDEX_FILE)
+        response = FileResponse(INDEX_FILE)
+        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+        return response
     raise HTTPException(status_code=404, detail="Frontend build not found")

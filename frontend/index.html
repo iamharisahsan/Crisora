@@ -4,9 +4,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#07111f" />
-    <title>Crisis Matrix</title>
+    <title>Crisora</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background:
+          radial-gradient(circle at top left, rgba(64, 211, 167, 0.18), transparent 26%),
+          radial-gradient(circle at top right, rgba(110, 208, 255, 0.12), transparent 20%),
+          radial-gradient(circle at bottom left, rgba(255, 125, 150, 0.12), transparent 24%),
+          linear-gradient(135deg, #040816 0%, #081223 35%, #06101b 100%);
+        color: #edf3ff;
+        font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+      }
+      #boot-screen {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        z-index: 9999;
+        background:
+          radial-gradient(circle at top left, rgba(64, 211, 167, 0.12), transparent 26%),
+          radial-gradient(circle at top right, rgba(110, 208, 255, 0.1), transparent 20%),
+          linear-gradient(135deg, #040816 0%, #081223 35%, #06101b 100%);
+      }
+      .boot-card {
+        padding: 24px 28px;
+        border-radius: 20px;
+        border: 1px solid rgba(173, 194, 255, 0.14);
+        background: rgba(10, 18, 34, 0.72);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(18px);
+        text-align: center;
+      }
+      .boot-title {
+        font-size: 1.1rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #84a9ff;
+        margin-bottom: 10px;
+      }
+      .boot-subtitle {
+        color: #98a8c7;
+        margin: 0;
+      }
+    </style>
   </head>
   <body>
+    <div id="boot-screen">
+      <div class="boot-card">
+        <div class="boot-title">Crisora</div>
+        <p class="boot-subtitle">Loading crisis command center...</p>
+      </div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

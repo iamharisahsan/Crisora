@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 const scenarios = [
   'Data Breach (100k User Records Exposed)',
@@ -38,6 +38,10 @@ function SpeechCard({ title, tone, text }) {
 }
 
 function App() {
+  useEffect(() => {
+    document.getElementById('boot-screen')?.remove()
+  }, [])
+
   const [crisisType, setCrisisType] = useState(scenarios[0])
   const [severity, setSeverity] = useState(8)
   const [loading, setLoading] = useState(false)
