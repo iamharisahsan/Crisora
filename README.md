@@ -104,6 +104,15 @@ A single-prompt LLM tries to compromise between both, resulting in a generic, di
 * **Glassmorphism Analytics Dashboard:** Modern React/Vite UI displaying live state transitions, real-time agent thought streams, and baseline-vs-society performance metrics.
 * **Automated Conflict Resolution:** Explicitly outputs consensus state tracking (`RESOLVED` vs. `RENEGOTIATE`) to guarantee alignment before output generation.
 
+## 🤖 Agents
+
+1. The **Legal Agent** drafts a strategy prioritizing compliance and regulatory obligations.
+
+2. The **PR Agent** simultaneously drafts a strategy focused on tone and brand sentiment.
+
+3. The **Arbitrator Agent** evaluates both streams, resolves conflicting directives, and synthesizes a unified crisis mitigation roadmap.
+
+
 ## Tech Stack
 - **LLM Engine:** `qwen-max` via Alibaba Cloud DashScope
 - **Serverless Execution:** Alibaba Cloud Function Compute (FC)
