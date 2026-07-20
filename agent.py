@@ -1,11 +1,13 @@
 from dotenv import load_dotenv
 load_dotenv(override=True)
 import os
+import urllib.request
 from openai import OpenAI
 
 REQUEST_TIMEOUT_SECONDS = float(os.environ.get("QWEN_REQUEST_TIMEOUT", "20"))
 DEFAULT_BASE_URL = "https://dashscope-intl.aliyuncs.com/compatible-mode/v1"
 DEFAULT_MODEL_NAME = "qwen-max"
+ALIBABA_FC_URL = "https://crisorafunction-pgammcpdjr.cn-hangzhou.fcapp.run"
 
 def get_api_key():
     """Return the first configured DashScope/Qwen API key."""

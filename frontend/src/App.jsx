@@ -6,7 +6,7 @@ const scenarios = [
   'Critical Cloud Infrastructure Outage',
 ]
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || ''
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'https://crisorafunction-pgammcpdjr.cn-hangzhou.fcapp.run'
 
 function formatPercent(value) {
   return `${value}%`
@@ -64,12 +64,13 @@ function App() {
     setResult(null)
 
     try {
-      const response = await fetch(`${API_BASE}/api/simulate`, {
+      const response = await fetch(API_BASE, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          prompt: `Crisis Type: ${crisisType}, Severity: ${severity}/10. Provide simulation results.`,
           crisis_type: crisisType,
           severity,
         }),
