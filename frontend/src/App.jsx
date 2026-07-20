@@ -137,7 +137,8 @@ function App() {
 
           <div className="status-strip">
             <span>Backend</span>
-            <strong>{API_BASE ? API_BASE.replace(/^https?:\/\//, '') : 'localhost:8000'}</strong>
+            {/* <strong>{API_BASE ? API_BASE.replace(/^https?:\/\//, '') : 'localhost:8000'}</strong> */}
+            <strong>{API_BASE ? API_BASE.replace(/^https?:\/\//, '') : 'https://crisorafunction-pgammcpdjr.cn-hangzhou.fcapp.run'}</strong>
           </div>
 
           <div className="mini-grid">
