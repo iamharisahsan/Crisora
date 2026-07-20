@@ -4,6 +4,63 @@ A cinematic multi-agent crisis response simulator built with a Python Qwen backe
 
 The app compares a single-agent baseline against a coordinated agent society made up of Legal, PR, and Arbitrator roles. The UI is built in React, while the model/agent logic stays in Python.
 
+
+# Architecture Diagram
+
+```mermaid
+graph TD
+    %% User Interface
+    subgraph Frontend ["React / Vite Frontend (Vercel)"]
+        UI["Glassmorphism Dashboard"]
+        Input["User Crisis Config<br/>(Type & Severity)"]
+    end
+
+    %% API Layer
+    subgraph API ["Backend API Layer (FastAPI / Vercel API)"]
+        Endpoint["POST /api/simulate"]
+        Service["Crisis Service Orchestrator"]
+    end
+
+    %% Multi-Agent Society
+    subgraph Agents ["Track 3: Agent Society Architecture"]
+        direction TB
+        Baseline["Single Agent Baseline"]
+        
+        subgraph Society ["Coordinated Agent Society"]
+            Legal["Legal Agent"]
+            PR["PR Agent"]
+            Arb["Arbitrator Agent"]
+        end
+        
+        Evaluator["Utility Scoring System"]
+    end
+
+    %% Cloud & LLM Layer
+    subgraph Cloud ["Alibaba Cloud & Qwen Cloud"]
+        FC["Alibaba Cloud Function Compute"]
+        Qwen["Qwen API / DashScope<br/>(qwen-max)"]
+    end
+
+    %% Flow Connections
+    Input --> UI
+    UI -->|HTTP POST| Endpoint
+    Endpoint --> Service
+    
+    Service -->|1. Run Baseline| Baseline
+    Service -->|2. Parallel Drafts| Legal
+    Service -->|2. Parallel Drafts| PR
+    
+    Legal -->|Draft Response| Arb
+    PR -->|Draft Response| Arb
+    
+    Arb -->|3. Merged Strategy| Evaluator
+    Baseline -->|Single Response| Evaluator
+    
+    Agents -->|API Calls| FC
+    FC -->|DashScope SDK| Qwen
+    Evaluator -->|Comparison Output| UI
+```
+
 ## Features
 
 - Modern React dashboard with a polished glassmorphism UI
