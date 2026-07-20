@@ -77,7 +77,7 @@ graph TD
 2. **Phase 2: Adversarial Draft Generation** — Legal Council and PR Guardian run parallel drafts.
 3. **Phase 3: Arbitrated Consensus** — The Arbitrator agent resolves conflicts, produces a unified strategy, and computes the utility delta.
 
----
+
 
 ## ⚡ Key Results (Baseline vs. Agent Society)
 
@@ -96,15 +96,13 @@ When a corporate crisis hits—whether it's a 100k-record data breach or a cloud
 
 A single-prompt LLM tries to compromise between both, resulting in a generic, diluted response that satisfies neither side. **Crisora** solves this by deploying a specialized multi-agent boardroom negotiation society.
 
-## Features
+### 🌟 Key Features
 
-- Modern React dashboard with a polished glassmorphism UI
-- Qwen-powered legal, PR, and arbitrator agents
-- Parallel agent execution for Legal and PR drafts
-- Final arbitration step that merges the competing responses
-- Simple utility scoring to compare baseline vs coordinated output
-- Local development setup for backend and frontend
-- Vercel deployment path for the React app and Python API
+* **Asynchronous Multi-Agent Negotiation Pipeline:** Orchestrates specialized Legal, PR, and Arbitrator agents running concurrently to simulate real boardroom conflict resolution.
+* **Powered by `qwen-max` on DashScope:** Utilizes Alibaba Cloud's flagship reasoning model to perform high-stakes policy synthesis and quantitative utility scoring.
+* **Serverless Execution via Alibaba Cloud Function Compute (FC):** Decoupled microservice architecture engineered for ultra-low latency parallel agent execution.
+* **Glassmorphism Analytics Dashboard:** Modern React/Vite UI displaying live state transitions, real-time agent thought streams, and baseline-vs-society performance metrics.
+* **Automated Conflict Resolution:** Explicitly outputs consensus state tracking (`RESOLVED` vs. `RENEGOTIATE`) to guarantee alignment before output generation.
 
 ## Tech Stack
 - **LLM Engine:** `qwen-max` via Alibaba Cloud DashScope
@@ -214,46 +212,6 @@ Example payload:
   "severity": 8
 }
 ```
-
-## Deploying to Vercel
-
-This project is already configured for Vercel with [vercel.json](vercel.json).
-
-### Recommended deployment steps
-
-1. Push this repository to GitHub.
-2. Create a new Vercel project and import the repo.
-3. Leave the project root at the repository root.
-4. Add your environment variables in the Vercel dashboard.
-5. Deploy.
-
-Vercel will:
-
-- Build the frontend from `frontend/`
-- Serve the compiled React app from `frontend/dist`
-- Run the Python API from `api/index.py`
-
-### Vercel environment variables
-
-Set the same secrets in Vercel that you use locally:
-
-- `DASHSCOPE_API_KEY` or `QWEN_API_KEY`
-- `QWEN_MODEL` if you want to override the default model
-- `QWEN_BASE_URL` if you are using a custom compatible endpoint
-- `QWEN_REQUEST_TIMEOUT` if you need a different timeout
-
-## Notes
-
-- `app.py` is the local FastAPI entrypoint.
-- `api/index.py` is the Vercel function entrypoint.
-- The UI uses relative `/api/...` requests, so it works locally with the Vite proxy and on Vercel without code changes.
-
-## Troubleshooting
-
-- If the frontend shows an API error, make sure the backend is running and your `.env` file contains a valid Qwen key.
-- If Vercel deployment fails, verify that the env vars are set in the Vercel project settings.
-- If the build cannot find the backend dependencies, reinstall them with `pip install -r requirements.txt`.
-
 
 ---
 
