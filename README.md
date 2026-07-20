@@ -1,8 +1,19 @@
-# Crisora
+# 🛡️ Crisora
+Agent Society for Enterprise Crisis Management
+
+> **Global AI Hackathon Series with Qwen Cloud** | **Track 3: Agent Society**  
+> *Asynchronous multi-agent boardroom negotiation system powered by Qwen Cloud and Alibaba Cloud Function Compute.*
+
+![Qwen Cloud](https://img.shields.io/badge/LLM-qwen--max-blue?style=for-the-badge)
+![Alibaba Cloud](https://img.shields.io/badge/Backend-Alibaba_Function_Compute-orange?style=for-the-badge)
+![Frontend](https://img.shields.io/badge/Frontend-React_%2B_Vite-61DAFB?style=for-the-badge)
+![Status](https://img.shields.io/badge/Consensus-RESOLVED-brightgreen?style=for-the-badge)
+
+🔗 **Live App:** [crisora-qwen.vercel.app](https://crisora-qwen.vercel.app/)  
+📝 **Medium Deep-Dive:** [Read on Medium](https://medium.com/@harismirza3456/crisora-orchestrating-an-agent-society-for-enterprise-crisis-management-on-qwen-cloud-34b390cdd8f3)
+
 
 A cinematic multi-agent crisis response simulator built with a Python Qwen backend and a React frontend.
-
-The app compares a single-agent baseline against a coordinated agent society made up of Legal, PR, and Arbitrator roles. The UI is built in React, while the model/agent logic stays in Python.
 
 
 # Architecture Diagram
@@ -61,6 +72,30 @@ graph TD
     Evaluator -->|Comparison Output| UI
 ```
 
+### The 3-Phase Process
+1. **Phase 1: Single-Agent Baseline** — Evaluates initial control performance.
+2. **Phase 2: Adversarial Draft Generation** — Legal Council and PR Guardian run parallel drafts.
+3. **Phase 3: Arbitrated Consensus** — The Arbitrator agent resolves conflicts, produces a unified strategy, and computes the utility delta.
+
+---
+
+## ⚡ Key Results (Baseline vs. Agent Society)
+
+| Metric | Single-Agent Baseline | Crisora Agent Society | Net Lift (Delta) |
+| :--- | :--- | :--- | :--- |
+| **Strategy Utility Score** | 90% | **100%** | **+10% Gain** |
+| **Consensus Status** | N/A (Single Output) | **RESOLVED** | Multi-Agent Alignment |
+| **Strategy Quality** | Lukewarm Compromise | Legal Safeguards + PR Empathy | Superior |
+
+
+## 📌 Problem Statement
+
+When a corporate crisis hits—whether it's a 100k-record data breach or a cloud outage—**Legal** and **PR** teams have fundamentally opposing goals:
+* **Legal:** Cold, risk-averse, focused on liability defense and minimal exposure.
+* **PR:** Empathetic, transparent, focused on customer trust and brand preservation.
+
+A single-prompt LLM tries to compromise between both, resulting in a generic, diluted response that satisfies neither side. **Crisora** solves this by deploying a specialized multi-agent boardroom negotiation society.
+
 ## Features
 
 - Modern React dashboard with a polished glassmorphism UI
@@ -72,13 +107,10 @@ graph TD
 - Vercel deployment path for the React app and Python API
 
 ## Tech Stack
-
-- Python 3.14+
-- FastAPI
-- OpenAI-compatible Qwen client
-- React 18
-- Vite
-- Vercel Python Functions
+- **LLM Engine:** `qwen-max` via Alibaba Cloud DashScope
+- **Serverless Execution:** Alibaba Cloud Function Compute (FC)
+- **Backend API:** Python 3.14+ / FastAPI
+- **Frontend:** React 18 / Vite (Glassmorphism Dashboard)
 
 ## Project Structure
 
