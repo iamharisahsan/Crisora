@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useState } from 'react'
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://crisorafunction-pgammcpdjr.cn-hangzhou.fcapp.run'
+
 const scenarios = [
   'Data Breach (100k User Records Exposed)',
   'Rogue Executive Tweet Flounders Stock',
   'Critical Cloud Infrastructure Outage',
 ]
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'https://crisorafunction-pgammcpdjr.cn-hangzhou.fcapp.run'
+const API_BASE = import.meta.env.VITE_API_BASE_URL || ''
 
 function formatPercent(value) {
   return `${value}%`
