@@ -64,13 +64,12 @@ function App() {
     setResult(null)
 
     try {
-      const response = await fetch(API_BASE, {
+      const response = await fetch(`${API_BASE}/api/simulate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          prompt: `Crisis Type: ${crisisType}, Severity: ${severity}/10. Provide simulation results.`,
           crisis_type: crisisType,
           severity,
         }),
