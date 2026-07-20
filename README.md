@@ -215,4 +215,6 @@ Example payload:
 
 ---
 
+Thank you for reading..
+<br/>
 Haris :)
